@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IP & Location Info</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white font-sans min-h-screen flex flex-col items-center px-4 py-8 gap-10">
+
+  <header class="text-center max-w-2xl">
+    <h1 class="text-4xl sm:text-5xl font-bold text-yellow-400 mb-4">📍 IP & Location Lookup</h1>
+    <p class="text-lg text-gray-300">Check your public IP and approximate geographic location.</p>
+  </header>
+
+  <main class="w-full max-w-3xl bg-gray-900 p-6 rounded-xl shadow-lg text-sm">
+    <div id="ip-info" class="space-y-2 text-gray-300">
+      <p class="text-gray-400">Fetching your data...</p>
+    </div>
+  </main>
+
+  <footer class="text-sm text-gray-500 mt-auto">
+    © 2025 CyberScan by Ranveer • Made with ❤️ for school
+  </footer>
+
+  <script>
+    fetch("https://ipinfo.io/json?token=e2847eea6c7679") // Replace "demo" with your token if needed
+      .then(res => res.json())
+      .then(data => {
+        const infoBox = document.getElementById("ip-info");
+        infoBox.innerHTML = `
+          <div><strong class="text-white">IP Address:</strong> ${data.ip}</div>
+          <div><strong class="text-white">City:</strong> ${data.city}</div>
+          <div><strong class="text-white">Region:</strong> ${data.region}</div>
+          <div><strong class="text-white">Country:</strong> ${data.country}</div>
+          <div><strong class="text-white">Location:</strong> ${data.loc}</div>
+          <div><strong class="text-white">ISP/Org:</strong> ${data.org}</div>
+          <div><strong class="text-white">Timezone:</strong> ${data.timezone}</div>
+        `;
+      })
+      .catch(err => {
+        document.getElementById("ip-info").innerHTML = `<p class="text-red-400">Failed to fetch IP info.</p>`;
+      });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Port Scanning Awareness – CyberScan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white min-h-screen flex flex-col items-center px-4 py-10 gap-10">
+
+  <h1 class="text-3xl font-bold text-green-400">🌐 Port Scanning Awareness</h1>
+
+  <div class="bg-gray-800 p-6 rounded-xl shadow-lg max-w-3xl space-y-6">
+    <p class="text-gray-300 text-lg">
+      <span class="text-yellow-400 font-bold">What is Port Scanning?</span>  
+      Port scanning is the process of sending packets to specific ports on a host and analyzing the responses to learn about the state of those ports.
+    </p>
+
+    <ul class="list-disc pl-6 text-gray-300 space-y-2">
+      <li><span class="text-green-400 font-semibold">Open Port:</span> Accepting connections (may reveal a running service).</li>
+      <li><span class="text-red-400 font-semibold">Closed Port:</span> No service listening, but host is reachable.</li>
+      <li><span class="text-yellow-400 font-semibold">Filtered Port:</span> No response or blocked by firewall.</li>
+    </ul>
+
+    <p class="text-gray-400">
+      🔍 Tools like <code class="bg-gray-900 px-1 py-0.5 rounded text-purple-300">nmap</code> are commonly used for port scanning in penetration testing or network audits.
+    </p>
+
+    <p class="text-red-400 font-bold">
+      ⚠️ Unauthorized port scanning is considered illegal or unethical in many environments. Only perform it on systems you own or have permission to scan.
+    </p>
+
+    <div class="text-center">
+      <a href="index.html" class="text-sm text-purple-400 hover:underline">← Back to Home</a>
+    </div>
+  </div>
+
+</body>
+</html>

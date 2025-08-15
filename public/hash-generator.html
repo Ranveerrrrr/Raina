@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hash Generator – CyberScan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-950 text-white min-h-screen flex flex-col items-center justify-center px-4 py-10 gap-10">
+
+  <h1 class="text-3xl font-bold text-purple-400">🔐 Hash Generator</h1>
+
+  <div class="bg-gray-800 p-6 rounded-xl shadow-lg w-full max-w-xl space-y-4">
+    <input id="inputText" type="text" placeholder="Enter any text..." class="w-full p-3 rounded bg-gray-900 text-white outline-none">
+    <button onclick="generateHashes()" class="bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded text-white font-medium w-full">Generate Hashes</button>
+
+    <div class="space-y-2">
+      <p><strong>MD5:</strong> <span id="md5Hash" class="text-green-400 break-all"></span></p>
+      <p><strong>SHA-1:</strong> <span id="sha1Hash" class="text-yellow-400 break-all"></span></p>
+      <p><strong>SHA-256:</strong> <span id="sha256Hash" class="text-red-400 break-all"></span></p>
+    </div>
+  </div>
+
+  <a href="index.html" class="text-sm text-purple-400 hover:underline">← Back to Home</a>
+
+  <script>
+    async function generateHashes() {
+      const input = document.getElementById('inputText').value;
+      if (!input) return;
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(input);
+
+      const md5 = await crypto.subtle.digest("MD5", data);
+      const sha1 = await crypto.subtle.digest("SHA-1", data);
+      const sha256 = await crypto.subtle.digest("SHA-256", data);
+
+      document.getElementById("md5Hash").textContent = hex(md5);
+      document.getElementById("sha1Hash").textContent = hex(sha1);
+      document.getElementById("sha256Hash").textContent = hex(sha256);
+    }
+
+    function hex(buffer) {
+      return Array.from(new Uint8Array(buffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+  </script>
+
+</body>
+</html>

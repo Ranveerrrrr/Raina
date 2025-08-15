@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Alert</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .transition-theme {
+      transition: all 0.8s ease;
+    }
+    .hacked-theme {
+      background-color: #7f1d1d;
+      color: white;
+    }
+    .hacked-header {
+      font-size: 3rem;
+      text-shadow: 0 0 10px rgba(255,0,0,0.7);
+      animation: pulse 1.5s infinite alternate;
+    }
+    @keyframes pulse {
+      from { text-shadow: 0 0 10px rgba(255,0,0,0.7); }
+      to { text-shadow: 0 0 20px rgba(255,0,0,0.9), 0 0 30px rgba(255,50,50,0.6); }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6 gap-6 font-mono transition-theme">
+  <div class="w-full max-w-4xl text-center">
+    <h1 class="hacked-header mb-6">⚠️ YOU'VE BEEN HACKED! ⚠️</h1>
+    <p class="text-xl mb-8">Your credentials have been compromised</p>
+    
+    <div class="bg-red-800/80 p-6 rounded-xl shadow-lg mb-8 transition-theme">
+      <h2 class="text-2xl font-bold mb-4">Captured Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+        <div>
+          <p><span class="font-bold">Username:</span> <span id="display-username" class="text-red-200"></span></p>
+          <p><span class="font-bold">Password:</span> <span id="display-password" class="text-red-200"></span></p>
+        </div>
+        <div>
+          <p><span class="font-bold">IP Address:</span> <span id="display-ip" class="text-red-200"></span></p>
+          <p><span class="font-bold">Time:</span> <span id="display-time" class="text-red-200"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-black/50 p-4 rounded-lg border border-red-600">
+      <p class="mb-2">⚠️ This was a security demonstration ⚠️</p>
+      <p class="text-sm text-red-300">Always verify URLs before entering credentials</p>
+    </div>
+  </div>
+
+  <script>
+    // Apply red theme immediately
+    document.body.classList.add('hacked-theme');
+    
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Display captured credentials
+    document.getElementById('display-username').textContent = 
+      decodeURIComponent(urlParams.get('username') || 'Not captured');
+    document.getElementById('display-password').textContent = 
+      decodeURIComponent(urlParams.get('password') || 'Not captured');
+    document.getElementById('display-ip').textContent = 
+      decodeURIComponent(urlParams.get('ip') || 'Unknown');
+    document.getElementById('display-time').textContent = 
+      decodeURIComponent(urlParams.get('time') || new Date().toLocaleString());
+    
+    // Add flashing effect
+    setInterval(() => {
+      document.body.classList.toggle('bg-red-900');
+      document.body.classList.toggle('bg-red-800');
+    }, 1000);
+  </script>
+</body>
+</html>
