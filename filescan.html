@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>File / Link Malware Scan – CyberScan</title>
+  <title>File / Link Malware Scan – Raina</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .transition-theme {
@@ -15,13 +15,19 @@
   <a href="index.html" class="self-start text-gray-400 hover:text-white">← Back</a>
   <h2 class="text-3xl font-bold">🗂️ File / Link Malware Scan</h2>
 
-  <!-- Info Box -->
+  
+  <p class="text-gray-400 max-w-2xl text-center">
+    File and link scanning is a crucial step in cybersecurity. 
+    Malicious files and phishing links are often disguised as harmless downloads or shared documents. 
+    Hackers use them to deliver malware, steal personal information, or compromise systems. 
+    Scanning ensures you detect threats early and stay protected before opening or sharing files.
+  </p>
+
   <div id="infoBox" class="bg-gray-800 text-sm p-4 rounded-xl max-w-2xl text-gray-300 transition-theme">
-    <p>📂 Enter a **direct download link** of a file to check if it's flagged by antivirus engines via VirusTotal backend.</p>
+    <p>📂 Enter a <strong>direct download link</strong> of a file to check if it's flagged by antivirus engines via VirusTotal backend.</p>
     <p class="mt-2">🧪 Try with sample link: <code>http://example.com/file.exe</code></p>
   </div>
 
-  <!-- Input & Button -->
   <div class="w-full max-w-xl flex flex-col gap-4">
     <input id="linkInput" type="url" placeholder="Paste file download URL" class="p-3 rounded-xl text-black" />
     <button onclick="scanLink()" id="scanBtn" class="bg-gray-700 hover:bg-gray-800 py-3 rounded-xl shadow-lg font-semibold transition-theme">
@@ -30,7 +36,6 @@
     <div id="linkResult" class="text-lg font-bold min-h-[2rem]"></div>
   </div>
 
-  <!-- Result Details -->
   <div id="detailsBox" class="hidden w-full max-w-2xl mt-4 bg-gray-800 text-white p-4 rounded-xl shadow-lg space-y-2 transition-theme"></div>
 
   <script>
@@ -73,7 +78,7 @@
         return;
       }
 
-      resEl.textContent = '⏳ Scanning via CyberScan backend...';
+      resEl.textContent = '⏳ Scanning via Raina backend...';
       resEl.className = 'text-white font-bold';
 
       try {
