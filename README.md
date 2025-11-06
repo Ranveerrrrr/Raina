@@ -52,7 +52,7 @@ This project aims to help learners trust and understand cybersecurity tools by s
 ## 🌍 View the Project
 
 Visit the live site here:
-👉 **[https://raina-project.web.app](https://raina-project.web.app)** *(example — replace with your Firebase/hosting URL)*
+👉 **[https://raina-project.web.app](https://raina-yr-security.web.app)** *(example — replace with your Firebase/hosting URL)*
 
 You can explore each feature directly in your browser, with no setup or installation required.
 
